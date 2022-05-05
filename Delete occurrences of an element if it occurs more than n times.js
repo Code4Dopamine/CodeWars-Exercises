@@ -4,25 +4,35 @@ Given a list and a number, create a new list that contains each number of lst at
 
 let test = [20, 37, 20, 21, 20];
 
-function deleteNth(arr, n) {
-  const m = new Map();
+// function deleteNth(arr, n) {
+//   const m = new Map();
 
-  return arr.filter((e) => {
-      // Add new key to Map m
-    if (!m.has(e)) {
-      m.set(e,1);
-      return e;
-      // If Key exists and is less than n -> increment Map Key Value
-    }else if (m.get(e) < n){
-        console.log('This ran');
-        m.set(e,m.get(e)+1);
-        return e;
-    }
-  });
+//   return arr.filter((e) => {
+//       // Add new key to Map m
+//     if (!m.has(e)) {
+//       m.set(e,1);
+//       return e;
+//       // If Key exists and is less than n -> increment Map Key Value
+//     }else if (m.get(e) < n){
+//         m.set(e,m.get(e)+1);
+//         return e;
+//     }
+//   });
   
-//   for (i of m){
-//       console.log(i);
-//   }
-}
+// //   for (i of m){
+// //       console.log(i);
+// //   }
+// }
 
-// console.log(deleteNth(test,2))
+
+function deleteNth(arr,x) {
+    var cache = {};
+    let newArr =  arr.filter(function(n) {
+      cache[n] = (cache[n]||0) + 1;
+      return cache[n] <= x;
+    });
+    console.log(cache);
+    return newArr;
+  }
+
+console.log(deleteNth(test,2))
