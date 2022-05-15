@@ -12,24 +12,27 @@ Example:
 
 function wave(str) {
     if (str.length === 0){
-        return ""
+        return [];
     }
 
     let splitStr = str.split("")
-    let strCount = 0;
+    let strIndex = []; //Stores [idx] of letter in "str"
+
     let abc = "abcdefghijklmnopqrstuvwxyz"
     splitStr.forEach( (e,i) => {
         if(abc.includes(e)){
-            strCount++;
+            strIndex.push(i);
         }
     })
     let answer = [];
-    for (let i = 0; i<str.length; i++){
+    //Loop through "strIndex" array that contain index location within the string
+    for (let i = 0; i<strIndex.length; i++){
         let newStr = [...splitStr];
-        newStr[i] = newStr[i].toUpperCase()
-        answer.push(newStr.join(""))
+        newStr[strIndex[i]] = newStr[strIndex[i]].toUpperCase();
+        answer.push(newStr.join(""));
     }
     return answer;
 }
 
-let test = "A       b    ,a       B"
+let test = "a       b    "
+console.log(wave(test))
