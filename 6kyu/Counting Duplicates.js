@@ -14,5 +14,32 @@ Example
 */
 
 function duplicateCount(text) {
-  //...
+  let charDict = {};
+
+  text
+    .toLowerCase()
+    .split("")
+    .forEach((e) => {
+      if (Object.keys(charDict).includes(e)) {
+        charDict[e]++;
+      } else {
+        charDict[e] = 1;
+      }
+    });
+
+  // console.log(charDict);
+  // console.log(Math.max(...(Object.values(charDict))))
+
+  let dupCounter = 0;
+  Object.values(charDict).forEach(e => {
+    if (e>1) dupCounter++;
+  })
+
+//   return Math.max(...Object.values(charDict));
+  return dupCounter;
+
 }
+
+duplicateCount("Indivisibility");
+duplicateCount("Indivisibilities");
+
