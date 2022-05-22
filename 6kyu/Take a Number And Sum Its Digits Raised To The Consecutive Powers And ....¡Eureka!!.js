@@ -14,7 +14,25 @@ sumDigPow(90, 100) == []
 */
 
 function sumDigPow(a, b) {
-  // Your code here
+    function digPow(num){
+        let numArr = num.toString().split("").map(e => parseInt(e))
+        let sum = 0;
+        numArr.forEach( (e,i) => {
+            sum += e**(i+1)
+        })
+        return sum;
+    }
+
+    let matches = [];
+    
+    for(let i = a; i <= b; i++){
+        if (i == digPow(i)){
+            matches.push(i);
+        }
+    }
+    // console.log(matches)
+    return matches;
 }
 
+sumDigPow(89,135)
 
