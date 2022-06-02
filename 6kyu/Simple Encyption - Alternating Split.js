@@ -26,11 +26,17 @@ function encrypt(text, n) {
         return temp.join("")
     }
 
+    let encrypt = text
     for (let i = 0; i < n; i++){
-        temp.
+        encrypt = reOrder(encrypt)
     }
+    console.log(encrypt)
 }
 
 function decrypt(encryptedText, n) {
     const mid = encryptedText/2
 }
+
+encrypt("012345",1)
+encrypt("01234",3)
+
