@@ -28,6 +28,22 @@ Note:
 If you are given an array with multiple answers, return the lowest correct index.
 */
 
-function findEvenIndex(arr) {
-    
+function findEvenIndex(arr){
+    for (let i = 0; i < arr.length; i++){
+        if(sum(arr.slice(0,i)) === sum(arr.slice(i+1,arr.length))){
+//             console.log("Same: " + i)
+            return i
+        }
+    }
+    return -1
 }
+
+function sum(ar){
+    if (ar.length === 0) return 0;
+    let sum = ar.reduce((a,b) => a+b)
+    return sum
+}
+
+findEvenIndex([1,2,3,4,3,2,1]) //return 3
+findEvenIndex([20,10,-80,10,10,15,35]) //return 0
+findEvenIndex([1,2,3,4,5,6]) // Return -1
