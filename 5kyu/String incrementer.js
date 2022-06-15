@@ -12,6 +12,12 @@ foo099 -> foo100
 Attention: If the number has leading zeros the amount of digits should be considered.
 */
 
-function incrementString(strng) {
+function incrementString(str) {
   // return incrementedString
+  
+  //Parse 000 as number
+    let number = parseInt(str.match(/\d+$/)).toString();
+    console.log(number)
 }
+
+incrementString("foo000")
