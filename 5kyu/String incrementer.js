@@ -16,6 +16,8 @@ function incrementString(str) {
   // return incrementedString
   
   //Parse 000 as number
+    let arr = str.split(/\d+$/)
+    console.log(arr)
     let number = parseInt(str.match(/\d+$/)).toString();
     console.log(number)
 }
