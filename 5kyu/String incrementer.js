@@ -13,28 +13,38 @@ Attention: If the number has leading zeros the amount of digits should be consid
 */
 
 function incrementString(str) {
-  //Split into [string, number]
-  let split = str.match(/[a-z]+|\d+/gi);
-  console.log(split);
+  //Check for "null" / ""
+  if (str === "" || null) return "1";
 
-  // If no number trailing behind:
-  if (split.length === 1) return split + "1";
-  // Else increment digit
-  else {
-    //Get Number and +1
-    let int = Number(split[1]) + 1;
-    // Setup Digit Array of Strings [...]
-    let digits = split[1].split("");
-    // Convert "int" to String
-    let result = String(int); //Stringify "int" var
-    // Remove front digits
+  //Split "Letter" and "Digits", and run increment() on "Digits" part
+  let split = str.match(/[a-z]+|\d+/gi) //Split "Letter" and "Digits"
+  if(split.length===1){
+    if(isNaN(split[0])) return split[0] + 1
+    else return increment(split[0])
+  }
+  //If there's 2 groups
+  else{
+    return split[0]+increment(split[1])
+  }
+
+  //Return incremented Digits in type:String
+  function increment(numStr) {
+    let int = Number(numStr) + 1; //Incremented Number
+    // console.log(int);
+    let digits = numStr.split("");
+    // console.log(digits);
+
+    let result = String(int);
     for (let i = 0; i < result.length; i++) {
       digits.pop();
     }
-
-    return split[0] + digits + result;
+    // console.log(digits);
+    // console.log(digits.join("") + result);
+    return digits.join("") + result;
   }
 }
 
-console.log(incrementString("foo0099"));
-console.log(incrementString("foo"));
+// console.log(incrementString(""));
+console.log(incrementString("1"));
+// console.log(incrementString("foo0099"));
+// console.log(incrementString("foo000"));
