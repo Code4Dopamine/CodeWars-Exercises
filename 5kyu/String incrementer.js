@@ -13,13 +13,28 @@ Attention: If the number has leading zeros the amount of digits should be consid
 */
 
 function incrementString(str) {
-  // return incrementedString
-  
-  //Parse 000 as number
-    let arr = str.split(/\d+$/)
-    console.log(arr)
-    let number = parseInt(str.match(/\d+$/)).toString();
-    console.log(number)
+  //Split into [string, number]
+  let split = str.match(/[a-z]+|\d+/gi);
+  console.log(split);
+
+  // If no number trailing behind:
+  if (split.length === 1) return split + "1";
+  // Else increment digit
+  else {
+    //Get Number and +1
+    let int = Number(split[1]) + 1;
+    // Setup Digit Array of Strings [...]
+    let digits = split[1].split("");
+    // Convert "int" to String
+    let result = String(int); //Stringify "int" var
+    // Remove front digits
+    for (let i = 0; i < result.length; i++) {
+      digits.pop();
+    }
+
+    return split[0] + digits + result;
+  }
 }
 
-incrementString("foo000")
+console.log(incrementString("foo0099"));
+console.log(incrementString("foo"));
