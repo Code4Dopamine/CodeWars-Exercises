@@ -19,9 +19,42 @@ A size 5 diamond:
 "  *\n ***\n*****\n ***\n  *\n"
 */
 
-function diamond(n){
-    if(n<=0 || n%2===0) return null;
-    
-    
-}
+function diamond(n) {
+  console.log("N=" + n);
+  if ((n <= 0) | (n % 2 === 0)) return null;
 
+  //Initial Push of stars(n)
+  let starList = [];
+  starList.push(stars(n));
+
+  let counter = 1;
+  for (let i = n - 2; i >= 1; i -= 2) {
+    // Add in front and in the back
+    starList.push(spacing(counter) + stars(i));
+    starList.unshift(spacing(counter) + stars(i));
+    counter++; //Update Spaceing Row Counter
+  }
+
+  // Print Spaces
+  function spacing(x) {
+    let spaces = "";
+    for (let i = 0; i < x; i++) {
+      spaces += " ";
+    }
+    // console.log(spaces.length)
+    return spaces;
+  }
+
+  //Print Star Rows
+  function stars(y) {
+    let str = "";
+    for (let i = 0; i < y; i++) {
+      str += "*";
+    }
+    str += "\n";
+    return str;
+  }
+
+  // console.log(starList.join(""))
+  return starList.join("");
+}
