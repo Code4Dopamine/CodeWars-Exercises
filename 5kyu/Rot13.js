@@ -8,19 +8,37 @@ Only letters from the latin/english alphabet should be shifted, like in the orig
 */
 
 function rot13(message) {
+  if (message.length === 0 || message === null) return "";
   let msgSplit = message.split("");
+  let a = "abcdefghijklmnopqrstuvwxyz";
+  let b = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-  //your code here
-  function cipherChar(t){
-    let a = "abcdefghijklmnopqrstuvwxyz".split("");
-    console.log("Char="+t)
-    return a[a.indexOf(t) + 13]
+  //Return lowercase char
+  function cipherChar(t) {
+    let index = (a.indexOf(t) + 13) % 26;
+    return a[index];
   }
-//   console.log(a.indexOf(msgSplit[1]));
-//   console.log(a[a.indexOf(msgSplit[1]) + 13]);
+  //Return uppercase char
+  function cipherChar2(t) {
+    let index = (b.indexOf(t) + 13) % 26;
+    return b[index];
+  }
 
-  console.log(cipherChar[msgSplit[0]])
+  let result = msgSplit
+    .map((e) => {
+      if (a.includes(e)) {
+        return cipherChar(e);
+      }
+      if (b.includes(e)) {
+        return cipherChar2(e);
+      }
+      return e;
+    })
+    .join("");
+
+  console.log(result);
+  return result
 }
 
-rot13("abc")
-
+//Rot13("test") = grfg
+rot13("tes$t");
