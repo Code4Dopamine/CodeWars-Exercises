@@ -30,13 +30,12 @@ Should return following list:
 */
 
 function treeByLevels (rootNode) {
-	return [];
-
+    
     //Get Value
-
+    
     //Push (Left), Push (Right) (if !null)
-
-
+    
+	return [];
 
 }
 
