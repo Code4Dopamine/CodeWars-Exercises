@@ -31,6 +31,16 @@ Should return following list:
 
 function treeByLevels (rootNode) {
     
+    let result = []
+
+    let currValue = rootNode.value
+    let left = rootNode.left
+    let right = rootNode.right
+
+    //Loop through left side -> return depth
+
+    //Loop thorugh right side, return depth?
+
     //Get Value
     
     //Push (Left), Push (Right) (if !null)
