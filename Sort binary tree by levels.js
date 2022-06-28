@@ -39,7 +39,7 @@ function treeByLevels (rootNode) {
 
     //Loop through left side -> return depth
 
-    //Loop thorugh right side, return depth?
+    //Loop thorugh right side, return depth? 
 
     //Get Value
     
