@@ -32,4 +32,7 @@ Note:
 function race(v1, v2, g) {
     if(v1>=v2) return null;
 
+    //Per "tick movement"
+    // v1*x - v2*x + g = 0
+
 }
